@@ -16,7 +16,13 @@ tavily_client = TavilyClient( api_key=os.getenv("TAVILY_API_KEY") )
 def web_search(query: str) -> str:
      """Search the web for recent and reliable information on a topic. Returns titles, URLs, and snippets. """ 
      results = tavily_client.search( query=query, max_results=5 ) 
-     return str(results)
-     
-     
-print(web_search.invoke("What are the recent news about the war?"))
+
+     out = []
+
+     for r in results['results']:
+         out.append(f"Title: {r['title']}\nURL: {r['url']}\nSnippet: {r['content'][:300]}\n")
+
+
+     return "\n-------\n".join(out)
+
+print(web_search.invoke("latest news on war"))
