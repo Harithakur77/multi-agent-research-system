@@ -25,4 +25,16 @@ def web_search(query: str) -> str:
 
      return "\n-------\n".join(out)
 
-print(web_search.invoke("latest news on war"))
+@tool
+def scrape_url(url:str) ->str:
+    """Scrape the content of a URL and return the text content from a given URL for deeper reading."""
+    try:
+        resp= requests.get(url, timeout=8,headers={'User-Agent': 'Mozilla/5.0'})
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        for tag in soup(['script', 'style',"nav","footer"]):
+            tag.decompose()
+            return soup.get_text(separator=" " , strip=True)[:3000]
+    except Exception as e:
+        return f"Error scraping URL: {str(e)}"
+
+print(scrape_url.invoke("https://www.indiatoday.in/cities/kochi/story/kochi-mercedes-driven-by-judge-minor-son-crashes-into-scooter-man-dead-keralam-car-crash-3024598-2026-10-25"))  
