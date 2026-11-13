@@ -7,7 +7,10 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+llm = ChatOpenAI(
+    model="gpt-4.1-mini",
+    temperature=0
+)
 
 #1st agent
 
