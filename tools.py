@@ -37,4 +37,3 @@ def scrape_url(url:str) ->str:
     except Exception as e:
         return f"Error scraping URL: {str(e)}"
 
-print(scrape_url.invoke("https://www.indiatoday.in/cities/kochi/story/kochi-mercedes-driven-by-judge-minor-son-crashes-into-scooter-man-dead-keralam-car-crash-3024598-2026-10-25"))  

@@ -67,3 +67,10 @@ def run_search_pipeline(topic : str)-> str:
         "report": state["report"]
     })
     print("\n critic report\n", state["feedback"])
+
+    return state
+
+
+if __name__ == "__main__":
+    topic = input("\n Enter a topic to research: ")
+    run_search_pipeline(topic)
