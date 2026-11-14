@@ -236,7 +236,7 @@ def run_pipeline(topic: str, tracker) -> dict:
             f"search results:\n{state['search_results']}\n\n"
             f"detailed scraped content:\n{state['scraped_content']}"
         )
-        state["report"] = message_text(writer_chain.invoke({"topic": topic, "research": research}))
+        state["report"] = message_text(writer_chain.invoke({"topic": topic, "research_gathered": research}))
         state["timings"].append(time.time() - t0)
 
         # 4 - Review
