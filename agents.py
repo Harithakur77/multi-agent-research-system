@@ -7,9 +7,10 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-llm = ChatOpenAI(
-    model="gpt-4.1-mini",
-    temperature=0
+llm = ChatGroq(
+    model="openai/gpt-oss-120b",
+    temperature=0,
+    max_retries=2
 )
 
 #1st agent

@@ -15,7 +15,7 @@ def run_search_pipeline(topic : str)-> str:
         "messages": [("user", f"find recent and reliable information on the topic: {topic}")],
     })
 
-    state["search_results"] = search_result["messages"][-1]["content"]
+    state["search_results"] = search_result["messages"][-1].content
 
     print("\n search result",state ['search_results'])
 
@@ -52,7 +52,7 @@ def run_search_pipeline(topic : str)-> str:
 
     state["report"]=writer_chain.invoke({
         "topic": topic,
-        "research": research_gathered
+        "research_gathered": research_gathered
     })
     print("\nfinal report\n", state["report"])
 
